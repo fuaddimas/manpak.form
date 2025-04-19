@@ -3,82 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MANPAK - Manusia Ngapak</title>
+  <title>Checkout Pesanan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
     body {
       margin: 0;
-      font-family: sans-serif;
-      background-color: #f4f4f4;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+
+    .checkout-box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .checkout-box h2 {
+      margin-bottom: 25px;
+      text-align: center;
+      font-size: 24px;
       color: #333;
     }
-    header {
-      background-color: #2e7d32;
-      color: white;
-      padding: 20px;
-      text-align: center;
+
+    .form-group {
+      margin-bottom: 20px;
     }
-    nav {
-      margin-top: 10px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #555;
     }
-    nav a {
+
+    .input-icon {
+      position: relative;
+    }
+
+    .input-icon i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+    }
+
+    .input-icon input,
+    .input-icon textarea,
+    .input-icon select {
+      width: 100%;
+      padding: 12px 12px 12px 38px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fdfdfd;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #8e44ad;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #8e44ad;
       color: white;
-      margin: 0 10px;
-      text-decoration: none;
+      font-size: 16px;
       font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
-    .hero {
-      background-image: url('https://source.unsplash.com/1024x400/?travel,bus');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 100px 20px;
+
+    button:hover {
+      background-color: #732d91;
+    }
+
+    .note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #888;
       text-align: center;
-    }
-    .hero h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 1.2em;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>MANPAK</h1>
-    <p>Jelajah Dunia, Logat Tetap Ngapak</p>
-    <nav>
-      <a href="#">Beranda</a>
-      <a href="#">Galeri</a>
-      <a href="#"><a href="tentang.html">Tentang</a></a>
-      <a href="#">Kontak</a>
-    </nav>
-  </header>
+  <div class="checkout-box">
+    <h2><i class="fas fa-shopping-cart"></i> Checkout Pesanan</h2>
+    <form action="#" method="POST">
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> Nama Pembeli</label>
+        <div class="input-icon">
+          <i class="fas fa-user"></i>
+          <input type="text" name="nama" required>
+        </div>
+      </div>
 
-  <section class="hero">
-    <h1>Yuk, Jelajahi Bersama MANPAK!</h1>
-    <p>Dokumentasi perjalanan khas manusia ngapak keliling Indonesia</p>
-  </section>
-  
-  <!-- Galeri Mini -->
-<section style="padding: 40px 20px; text-align: center; background-color: #fff;">
-  <h2 style="color: #2e7d32; margin-bottom: 20px;">Cuplikan Perjalanan</h2>
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
-    <img src="https://source.unsplash.com/300x200/?nature,travel" alt="Foto 1" style="width: 300px; border-radius: 10px;">
-    <img src="https://source.unsplash.com/300x200/?bus,road" alt="Foto 2" style="width: 300px; border-radius: 10px;">
-    <img src="https://source.unsplash.com/300x200/?mountain,trip" alt="Foto 3" style="width: 300px; border-radius: 10px;">
-    <img src="https://source.unsplash.com/300x200/?village,journey" alt="Foto 4" style="width: 300px; border-radius: 10px;">
+      <div class="form-group">
+        <label><i class="fas fa-phone"></i> No. HP / WhatsApp</label>
+        <div class="input-icon">
+          <i class="fas fa-phone"></i>
+          <input type="text" name="hp" required>
+        </div>
+      </div>
+      <!-- BAGIAN PRODUK -->
+  <div class="form-group">
+  <label><i class="fas fa-box"></i> Nama Produk</label>
+
+  <!-- Dropdown Pilihan -->
+  <div class="input-icon" style="margin-bottom: 10px;">
+    <i class="fas fa-caret-down"></i>
+    <select name="produk_pilihan" onchange="toggleManual(this.value)">
+      <option value="">-- Pilih Produk --</option>
+      <option value="Sambal Tuna">Sambal Tuna</option>
+      <option value="Sambal Udang">Sambal Udang</option>
+      <option value="Sambal Pete">Sambal Pete (cooming soon)</option>
+      <option value="lainnya">Lainnya (Isi Manual)</option>
+    </select>
   </div>
-  <a href="galeri.html" style="display: inline-block; margin-top: 25px; padding: 10px 20px; background-color: #2e7d32; color: white; text-decoration: none; border-radius: 8px;">Lihat Semua Galeri</a>
-</section>
-<footer style="background-color: #2e7d32; color: white; text-align: center; padding: 20px; margin-top: 40px;">
-  <p>&copy; 2025 MANPAK - Manusia Ngapak</p>
-  <p>Ikuti kami di:
-    <a href="#" style="color: #c8e6c9; text-decoration: none; margin: 0 5px;">Instagram</a> |
-    <a href="#" style="color: #c8e6c9; text-decoration: none; margin: 0 5px;">Facebook</a> |
-    <a href="#" style="color: #c8e6c9; text-decoration: none; margin: 0 5px;">YouTube</a>
-  </p>
-</footer>
+
+  <!-- Input Manual -->
+  <div class="input-icon" id="manualInput" style="display: none;">
+    <i class="fas fa-pen"></i>
+    <input type="text" name="produk_manual" placeholder="Tulis nama produk...">
+  </div>
+</div>
+
+      <div class="form-group">
+        <label><i class="fas fa-sort-numeric-up"></i> Jumlah Barang</label>
+        <div class="input-icon">
+          <i class="fas fa-sort-numeric-up"></i>
+          <select name="Jumlah_Barang">
+            <option value="">-- pilih jumlah --</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="lainnya">lainnya (isi manual) </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+  <label><i class="fas fa-map-marker-alt"></i> Alamat Lengkap</label>
+  <div class="input-icon">
+    <i class="fas fa-map-marker-alt"></i>
+    <textarea id="alamat" name="alamat" rows="3" required></textarea>
+  </div>
+  <div style="margin-top: 8px; text-align: right;">
+    <a href="#" onclick="bukaMap()" style="font-size: 13px; color: #8e44ad; text-decoration: underline;">
+      Lihat di Google Maps
+    </a>
+  </div>
+</div>
+      <div class="form-group">
+        <label><i class="fas fa-money-bill-wave"></i> Metode Pembayaran</label>
+        <div class="input-icon">
+          <i class="fas fa-money-bill-wave"></i>
+          <select name="pembayaran">
+            <option value="Transfer">Transfer Bank</option>
+            <option value="COD">Bayar di Tempat (COD)</option>
+            <option value="QRIS">QRIS</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Pesanan</button>
+
+      <div class="note">
+        Setelah klik kirim, tim kami akan segera menghubungi kamu!
+      </div>
+    </form>
+  </div>
+ <script>
+  function bukaMap() {
+    var alamat = document.getElementById("alamat").value;
+    if (alamat.trim() !== "") {
+      var url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(alamat);
+      window.open(url, "_blank");
+    } else {
+      alert("Isi dulu alamatnya ya.");
+    }
+  }
+</script>
+
 </body>
 </html>
