@@ -10,7 +10,6 @@
       box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
     }
-
     body {
       margin: 0;
       background-color: #f9f9f9;
@@ -19,7 +18,6 @@
       align-items: flex-start;
       padding: 40px 20px;
     }
-
     .checkout-box {
       background-color: #fff;
       padding: 30px;
@@ -28,29 +26,24 @@
       width: 100%;
       max-width: 600px;
     }
-
     .checkout-box h2 {
       margin-bottom: 25px;
       text-align: center;
       font-size: 24px;
       color: #333;
     }
-
     .form-group {
       margin-bottom: 20px;
     }
-
     label {
       display: block;
       margin-bottom: 8px;
       font-weight: 600;
       color: #555;
     }
-
     .input-icon {
       position: relative;
     }
-
     .input-icon i {
       position: absolute;
       left: 12px;
@@ -58,23 +51,20 @@
       transform: translateY(-50%);
       color: #999;
     }
-
     .input-icon input,
     .input-icon textarea,
     .input-icon select {
       width: 100%;
-      padding: 12px 12px 12px 38px;
+      padding: 12px 12px 12px 48px;
       border: 1px solid #ddd;
       border-radius: 8px;
       background-color: #fdfdfd;
       transition: border-color 0.3s;
     }
-
     input:focus, textarea:focus, select:focus {
       border-color: #8e44ad;
       outline: none;
     }
-
     button {
       width: 100%;
       padding: 14px;
@@ -87,11 +77,9 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-
     button:hover {
       background-color: #732d91;
     }
-
     .note {
       margin-top: 20px;
       font-size: 13px;
@@ -104,7 +92,10 @@
 
   <div class="checkout-box">
     <h2><i class="fas fa-shopping-cart"></i> Checkout Pesanan</h2>
-    <form action="#" method="POST">
+    <form action="https://formsubmit.co/fuaddimas8@gmail.com" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="box">
+      <!-- Nama Pembeli -->
       <div class="form-group">
         <label><i class="fas fa-user"></i> Nama Pembeli</label>
         <div class="input-icon">
@@ -113,6 +104,7 @@
         </div>
       </div>
 
+      <!-- No. HP -->
       <div class="form-group">
         <label><i class="fas fa-phone"></i> No. HP / WhatsApp</label>
         <div class="input-icon">
@@ -120,61 +112,85 @@
           <input type="text" name="hp" required>
         </div>
       </div>
-      <!-- BAGIAN PRODUK -->
-  <div class="form-group">
-  <label><i class="fas fa-box"></i> Nama Produk</label>
 
-  <!-- Dropdown Pilihan -->
-  <div class="input-icon" style="margin-bottom: 10px;">
-    <i class="fas fa-caret-down"></i>
-    <select name="produk_pilihan" onchange="toggleManual(this.value)">
-      <option value="">-- Pilih Produk --</option>
-      <option value="Sambal Tuna">Sambal Tuna</option>
-      <option value="Sambal Udang">Sambal Udang</option>
-      <option value="Sambal Pete">Sambal Pete (cooming soon)</option>
-      <option value="lainnya">Lainnya (Isi Manual)</option>
-    </select>
-  </div>
-
-  <!-- Input Manual -->
-  <div class="input-icon" id="manualInput" style="display: none;">
-    <i class="fas fa-pen"></i>
-    <input type="text" name="produk_manual" placeholder="Tulis nama produk...">
-  </div>
-</div>
-
+      <!-- Nama Produk -->
       <div class="form-group">
-        <label><i class="fas fa-sort-numeric-up"></i> Jumlah Barang</label>
-        <div class="input-icon">
-          <i class="fas fa-sort-numeric-up"></i>
-          <select name="Jumlah_Barang">
-            <option value="">-- pilih jumlah --</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="lainnya">lainnya (isi manual) </option>
+        <label><i class="fas fa-box"></i> Nama Produk</label>
+        <div class="input-icon" style="margin-bottom: 10px;">
+          <i class="fas fa-caret-down"></i>
+          <select name="produk_pilihan" onchange="toggleManual(this.value)">
+            <option value="">-- Pilih Produk --</option>
+            <option value="Sambal Tuna">Sambal Tuna</option>
+            <option value="Sambal Udang">Sambal Udang</option>
+            <option value="Sambal Pete">Sambal Pete (coming soon)</option>
+            <option value="lainnya">Lainnya (Isi Manual)</option>
           </select>
+        </div>
+        <div class="input-icon" id="manualInput" style="display: none;">
+          <i class="fas fa-pen"></i>
+          <input type="text" name="produk_manual" placeholder="Tulis nama produk...">
         </div>
       </div>
 
+      <!-- Jumlah Barang -->
       <div class="form-group">
-  <label><i class="fas fa-map-marker-alt"></i> Alamat Lengkap</label>
-  <div class="input-icon">
-    <i class="fas fa-map-marker-alt"></i>
-    <textarea id="alamat" name="alamat" rows="3" required></textarea>
-  </div>
-  <div style="margin-top: 8px; text-align: right;">
-    <a href="#" onclick="bukaMap()" style="font-size: 13px; color: #8e44ad; text-decoration: underline;">
-      Lihat di Google Maps
-    </a>
-  </div>
-</div>
+        <label><i class="fas fa-sort-numeric-up"></i> Jumlah Barang</label>
+        <div class="input-icon" style="margin-bottom: 10px;">
+          <i class="fas fa-sort-numeric-up"></i>
+          <select name="jumlah_pilihan" onchange="toggleJumlahManual(this.value)">
+            <option value="">-- pilih jumlah --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="lainnya">lainnya (isi manual)</option>
+          </select>
+        </div>
+        <div class="input-icon" id="jumlahManualInput" style="display: none;">
+          <i class="fas fa-pen"></i>
+          <input type="number" name="jumlah_manual" placeholder="Tulis jumlah barang..." min="1">
+        </div>
+      </div>
+
+      <!-- Alamat -->
+      <div class="form-group">
+        <label><i class="fas fa-map-marker-alt"></i> Alamat Lengkap</label>
+        <div class="input-icon">
+          <i class="fas fa-map-marker-alt"></i>
+          <textarea id="alamat" name="alamat" rows="3" required></textarea>
+        </div>
+        <div style="margin-top: 8px; text-align: right;">
+          <a href="#" onclick="bukaMap()" style="font-size: 13px; color: #8e44ad; text-decoration: underline;">
+            Lihat di Google Maps
+          </a>
+        </div>
+      </div>
+
+      <!-- Titik Koordinat -->
+      <div class="form-group">
+        <label><i class="fas fa-map-pin"></i> Titik Koordinat (Opsional)</label>
+        <div class="input-icon">
+          <i class="fas fa-location-arrow"></i>
+          <input type="text" id="latitude" name="latitude" placeholder="Latitude">
+        </div>
+        <div class="input-icon" style="margin-top: 10px;">
+          <i class="fas fa-location-arrow"></i>
+          <input type="text" id="longitude" name="longitude" placeholder="Longitude">
+        </div>
+        <div style="margin-top: 10px; text-align: right;">
+          <a href="#" onclick="ambilLokasi()" style="font-size: 13px; color: #27ae60; text-decoration: underline;">
+            Gunakan Lokasi Sekarang
+          </a>
+        </div>
+      </div>
+
+      <!-- Metode Pembayaran -->
       <div class="form-group">
         <label><i class="fas fa-money-bill-wave"></i> Metode Pembayaran</label>
         <div class="input-icon">
           <i class="fas fa-money-bill-wave"></i>
-          <select name="pembayaran">
+          <select name="pembayaran" id="pembayaran" onchange="toggleBank(this.value)">
+            <option value="">-- Pilih Metode --</option>
             <option value="Transfer">Transfer Bank</option>
             <option value="COD">Bayar di Tempat (COD)</option>
             <option value="QRIS">QRIS</option>
@@ -182,24 +198,81 @@
         </div>
       </div>
 
+      <!-- Pilihan Bank -->
+      <div class="form-group" id="bankGroup" style="display: none;">
+        <label><i class="fas fa-university"></i> Pilih Bank</label>
+        <div class="input-icon">
+          <i class="fas fa-university"></i>
+          <select name="bank" id="bank" onchange="tampilkanRekening(this.value)">
+            <option value="">-- Pilih Bank --</option>
+            <option value="bca">BCA</option>
+            <option value="bri">BRI</option>
+            <option value="mandiri">Mandiri</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Nomor Rekening -->
+      <div class="form-group" id="rekeningGroup" style="display: none;">
+        <label><i class="fas fa-receipt"></i> Nomor Rekening</label>
+        <div class="input-icon">
+          <i class="fas fa-hashtag"></i>
+          <input type="text" id="rekening" name="rekening" readonly placeholder="Nomor Rekening akan muncul di sini">
+        </div>
+      </div>
+
       <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Pesanan</button>
 
-      <div class="note">
-        Setelah klik kirim, tim kami akan segera menghubungi kamu!
-      </div>
+      <div class="note">Setelah klik kirim, tim kami akan segera menghubungi kamu!</div>
     </form>
   </div>
- <script>
-  function bukaMap() {
-    var alamat = document.getElementById("alamat").value;
-    if (alamat.trim() !== "") {
-      var url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(alamat);
-      window.open(url, "_blank");
-    } else {
-      alert("Isi dulu alamatnya ya.");
+
+  <script>
+    function toggleManual(value) {
+      document.getElementById("manualInput").style.display = (value === "lainnya") ? "block" : "none";
     }
-  }
-</script>
+    function toggleJumlahManual(value) {
+      document.getElementById("jumlahManualInput").style.display = (value === "lainnya") ? "block" : "none";
+    }
+    function bukaMap() {
+      const lat = document.getElementById("latitude").value.trim();
+      const lng = document.getElementById("longitude").value.trim();
+      if (lat && lng) {
+        window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
+      } else {
+        const alamat = document.getElementById("alamat").value.trim();
+        if (alamat) {
+          window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(alamat)}`, "_blank");
+        } else {
+          alert("Isi alamat atau koordinat terlebih dahulu.");
+        }
+      }
+    }
+    function ambilLokasi() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            document.getElementById("latitude").value = pos.coords.latitude.toFixed(6);
+            document.getElementById("longitude").value = pos.coords.longitude.toFixed(6);
+          },
+          () => { alert("Gagal mengambil lokasi. Pastikan GPS aktif."); }
+        );
+      } else { alert("Browser tidak mendukung geolokasi."); }
+    }
+    function toggleBank(value) {
+      document.getElementById("bankGroup").style.display = (value === "Transfer") ? "block" : "none";
+      if (value !== "Transfer") {
+        document.getElementById("rekeningGroup").style.display = "none";
+        document.getElementById("rekening").value = "";
+      }
+    }
+    function tampilkanRekening(bank) {
+      const data = { bca: "1234567890 (a.n. Eki BCA)", bri: "0987654321 (a.n. Eki BRI)", mandiri: "1122334455 (a.n. Eki Mandiri)" };
+      const rek = data[bank] || "";
+      document.getElementById("rekening").value = rek;
+      document.getElementById("rekeningGroup").style.display = rek ? "block" : "none";
+    }
+  </script>
 
 </body>
 </html>
